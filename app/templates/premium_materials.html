@@ -1,0 +1,48 @@
+{% extends "premium_base.html" %}
+{% block content %}
+<div class="page-title-row">
+  <div><h2>Biblioteca de conteúdos › Materiais e Playbooks</h2><p>Acesse e compartilhe materiais que ajudam a conduzir negociações e encantar leads.</p></div>
+  <button class="primary-button">+ Novo material</button>
+</div>
+
+<div class="tabs"><button class="active">Materiais</button><button>Scripts</button><button>Objeções</button><button>Templates</button><button>Empreendimentos</button></div>
+<div class="filters-row compact-filters">
+  <label><select><option>Todos os tipos</option><option>Vídeo</option><option>Imagem</option><option>PDF</option></select></label>
+  <label><select><option>Todos os empreendimentos</option>{% for dev in developments %}<option>{{ dev.name }}</option>{% endfor %}</select></label>
+  <label><select><option>Todos os estágios</option><option>Primeiro contato</option><option>Qualificação</option><option>Proposta</option></select></label>
+  <label><select><option>Todos os formatos</option></select></label>
+  <label class="search-label">⌕<input placeholder="Buscar materiais..." /></label>
+  <button class="ghost-button">Mais filtros ⚙</button>
+</div>
+
+<div class="materials-layout">
+  <section>
+    <p class="muted-line">54 materiais encontrados</p>
+    <div class="materials-grid">
+      {% for material in materials[:6] %}
+      <article class="material-card">
+        <div class="material-thumb thumb-{{ loop.index }}"><span class="type-badge">{{ material.type|title }}</span>{% if material.type == 'video' %}<b class="play">▶</b>{% endif %}</div>
+        <h3>{{ material.title }}</h3>
+        <p>{{ material.development.name if material.development else 'Évora Urbanismo' }}</p>
+        <div class="tag-row">
+          {% for tag in (material.tags or '').split(',')[:2] %}<span>{{ tag }}</span>{% endfor %}
+        </div>
+        <div class="material-actions"><button>◉ Visualizar</button><button>↗ Compartilhar</button><button>🔗 Copiar link</button><button>⋮</button></div>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <aside class="card recommendation-card">
+    <h2>Recomendação da Vitória ✨</h2>
+    <p>Materiais ideais para enviar para</p>
+    <div class="lead-cell selected-mini"><span class="avatar small hot">FA</span><div><strong>Fernando Almeida</strong><small>Interesse: lotes a partir de 200m²</small></div><span class="temp-pill quente">Quente</span></div>
+    <p>Envie estes materiais para avançar na negociação:</p>
+    <div class="send-list"><div><span class="mini-thumb map"></span><b>Mapa de localização</b><small>Imagem</small><button>Enviar</button></div><div><span class="mini-thumb plan"></span><b>Implantação geral</b><small>Imagem</small><button>Enviar</button></div><div><span class="mini-thumb table"></span><b>Tabela de unidades</b><small>PDF</small><button>Enviar</button></div><div><span class="mini-thumb video"></span><b>Vídeo aéreo — Vista geral</b><small>Vídeo</small><button>Enviar</button></div></div>
+    <button class="outline-action full-width green">🟢 Enviar todos por WhatsApp</button>
+    <h3>Script sugerido (Objeções)</h3>
+    <div class="accordion-list"><button>💰 Objeção de preço⌄</button><button>🏦 Objeção de entrada⌄</button><button>📍 Objeção de localização⌄</button><button>▤ Objeção de documentação⌄</button></div>
+    <a class="full-link">Ver todos os scripts →</a>
+  </aside>
+</div>
+{% endblock %}

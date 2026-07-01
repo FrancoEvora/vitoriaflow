@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ page_title }} • Évora LeadFlow</title>
+    <link rel="icon" href="/static/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/static/premium.css" />
+  </head>
+  <body data-active="{{ active }}">
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="/" aria-label="Évora LeadFlow">
+          <div class="brand-mark">
+            <svg viewBox="0 0 48 48" role="img" aria-hidden="true">
+              <path d="M9 38V16.5L24 7l15 9.5V38" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+              <path d="M16 38V22h6v16m4 0V18h6v20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+              <path d="M13 38h22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+            </svg>
+          </div>
+          <div>
+            <strong>ÉVORA</strong>
+            <span>LEADFLOW</span>
+          </div>
+        </a>
+
+        <nav class="nav">
+          <a class="nav-item {% if active == 'dashboard' %}active{% endif %}" href="/"><span>▦</span>Dashboard</a>
+          <a class="nav-item {% if active == 'leads' %}active{% endif %}" href="/leads"><span>☷</span>Leads</a>
+          <a class="nav-item {% if active == 'vitoria' %}active{% endif %}" href="/vitoria"><span>✦</span>Vitória</a>
+          <a class="nav-item {% if active == 'corretores' %}active{% endif %}" href="/corretores"><span>♙</span>Corretores</a>
+          <a class="nav-item {% if active == 'empreendimentos' %}active{% endif %}" href="/empreendimentos"><span>⌂</span>Empreendimentos</a>
+          <a class="nav-item {% if active == 'materiais' %}active{% endif %}" href="/materiais"><span>▤</span>Materiais</a>
+          <a class="nav-item {% if active == 'relatorios' %}active{% endif %}" href="/relatorios"><span>▧</span>Relatórios</a>
+          <a class="nav-item {% if active == 'configuracoes' %}active{% endif %}" href="/configuracoes"><span>⚙</span>Configurações</a>
+        </nav>
+
+        <div class="development-card">
+          <div class="development-art" aria-hidden="true">
+            <div class="road road-a"></div>
+            <div class="road road-b"></div>
+            <div class="lot lot-1"></div>
+            <div class="lot lot-2"></div>
+            <div class="lot lot-3"></div>
+            <div class="lot lot-4"></div>
+          </div>
+          <span>Residencial</span>
+          <strong>Vila dos Ipês</strong>
+          <a href="/empreendimentos">Ver empreendimento →</a>
+        </div>
+
+        <div class="profile-card">
+          <div class="avatar avatar-photo">LA</div>
+          <div>
+            <strong>{{ manager_name }}</strong>
+            <span>{{ manager_role }}</span>
+          </div>
+          <span class="chevron">⌄</span>
+        </div>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div class="topbar-left">
+            <button class="icon-button" aria-label="Menu">☰</button>
+            <h1>{{ page_title }}</h1>
+            <span class="online-pill"><i></i> Vitória online</span>
+          </div>
+          <div class="topbar-right">
+            <button class="icon-button" aria-label="Buscar">⌕</button>
+            <button class="icon-button notification" aria-label="Notificações">◔<b>3</b></button>
+            <div class="date-pill">📅 {{ date_range }}⌄</div>
+          </div>
+        </header>
+
+        <section class="content">
+          {% block content %}{% endblock %}
+        </section>
+      </main>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="/static/premium.js"></script>
+  </body>
+</html>

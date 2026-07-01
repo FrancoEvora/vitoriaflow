@@ -1,0 +1,60 @@
+{% extends "premium_base.html" %}
+{% block content %}
+<div class="page-title-row">
+  <div><h2>Leads</h2><p>Funil comercial ativo, com próxima melhor ação gerada pela Vitória.</p></div>
+  <a class="primary-button" href="/vitoria">+ Novo lead com a Vitória</a>
+</div>
+
+<div class="filters-row">
+  <label>Origem<select><option>Todas</option><option>Instagram</option><option>Indicação</option><option>Plantão</option></select></label>
+  <label>Temperatura<select><option>Todas</option><option>Quente</option><option>Morno</option><option>Frio</option></select></label>
+  <label>Empreendimento<select><option>Todos</option>{% for dev in developments %}<option>{{ dev.name }}</option>{% endfor %}</select></label>
+  <label>Corretor<select><option>Todos</option>{% for broker in broker_rows %}<option>{{ broker.name }}</option>{% endfor %}</select></label>
+  <label class="search-label">⌕<input data-filter-table="lead-list" placeholder="Buscar por nome, telefone ou e-mail..." /></label>
+  <button class="ghost-button">☷ Filtros</button>
+</div>
+
+<section class="pipeline-strip">
+  {% for item in pipeline %}
+  <div class="pipeline-item"><span>{{ item.icon }}</span><div><strong>{{ item.label }}</strong><b>{{ item.count }}</b><small>{{ item.percent }}</small></div></div>
+  {% endfor %}
+</section>
+
+<div class="leads-layout">
+  <section class="card table-card">
+    <div class="lead-table full" id="lead-list">
+      <div class="table-row table-head"><span></span><span>Lead</span><span>Temperatura</span><span>Origem</span><span>Empreendimento</span><span>Corretor</span><span>Score</span><span>Próxima ação</span><span></span></div>
+      {% for lead in leads %}
+      <a class="table-row lead-result" href="/leads/{{ lead.id }}" data-search="{{ lead.name }} {{ lead.phone }} {{ lead.source }} {{ lead.development }} {{ lead.broker }}">
+        <span><input type="checkbox" /></span>
+        <div class="lead-cell"><span class="avatar small {% if lead.temperature == 'quente' %}hot{% elif lead.temperature == 'morno' %}warm{% endif %}">{{ lead.initials }}</span><div><strong>{{ lead.name }}</strong><small>{{ lead.phone }}</small></div></div>
+        <span class="temp-pill {{ lead.temperature }}">{% if lead.temperature == 'quente' %}🔥{% elif lead.temperature == 'morno' %}●{% else %}○{% endif %} {{ lead.temperature|title }}</span>
+        <span>{{ lead.source_icon }} {{ lead.source }}</span>
+        <span>{{ lead.development }}</span>
+        <div class="lead-cell"><span class="avatar xsmall">{{ lead.broker_initials }}</span><span>{{ lead.broker }}</span></div>
+        <span class="score">{{ lead.score }}</span>
+        <span>{{ lead.next_action[:34] }}...</span>
+        <span class="dots">⋮</span>
+      </a>
+      {% endfor %}
+    </div>
+    <div class="pagination"><span>Mostrando 1 a {{ leads|length }} de 128 leads</span><div><button>‹</button><button class="active">1</button><button>2</button><button>3</button><span>...</span><button>16</button><button>›</button></div><button>8 por página⌄</button></div>
+  </section>
+
+  <aside class="card lead-drawer">
+    {% if selected_lead %}
+    <div class="drawer-head"><span class="avatar large hot">{{ selected_lead.initials }}</span><div><h2>{{ selected_lead.name }}</h2><p>{{ selected_lead.phone }} · WhatsApp simulado</p><div><span class="temp-pill {{ selected_lead.temperature }}">{{ selected_lead.temperature|title }}</span><span class="badge soft">Novo</span></div></div><span class="score big">{{ selected_lead.score }}</span></div>
+    <dl class="detail-list">
+      <div><dt>Origem</dt><dd>{{ selected_lead.source }}</dd></div>
+      <div><dt>Empreendimento de interesse</dt><dd>{{ selected_lead.development }}</dd></div>
+      <div><dt>Objetivo</dt><dd>{{ selected_lead.objective }}</dd></div>
+      <div><dt>Objeção principal</dt><dd>{{ selected_lead.main_objection }}</dd></div>
+    </dl>
+    <div class="history-block"><div class="card-header mini"><h3>Histórico de interações</h3><a href="/vitoria">Ver tudo →</a></div>
+      {% for item in interactions %}<div class="history-item"><span>{% if item.direction == 'inbound' %}🟢{% elif item.direction == 'system' %}⚙{% else %}✉{% endif %}</span><div><strong>{{ item.channel|replace('_', ' ')|title }}</strong><p>{{ item.message[:72] }}</p></div></div>{% endfor %}
+    </div>
+    <div class="next-action-box"><h3>✦ Próxima melhor ação <small>(gerada pela Vitória)</small></h3><p>{{ selected_lead.next_action }}</p><button class="primary-button full-width">☎ Ligar agora</button><a class="outline-action full-width" href="/vitoria">✦ Gerar mensagem</a><small>A sugestão da Vitória é baseada no histórico e em leads com perfil semelhante.</small></div>
+    {% endif %}
+  </aside>
+</div>
+{% endblock %}

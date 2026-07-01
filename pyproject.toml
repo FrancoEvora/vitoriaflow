@@ -1,0 +1,8 @@
+[project]
+name = "evora-leadflow"
+version = "0.1.0"
+description = "CRM ativo via WhatsApp com a agente Vitória"
+requires-python = ">=3.12"
+
+[tool.vercel]
+entrypoint = "app.main:app"

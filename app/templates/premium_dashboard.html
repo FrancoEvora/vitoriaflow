@@ -1,0 +1,65 @@
+{% extends "premium_base.html" %}
+{% block content %}
+<div class="kpi-grid five">
+  <article class="kpi-card"><div class="kpi-icon orange">♙</div><div><span>Leads novos</span><strong>{{ kpis.new_leads }}</strong><small>↑ 18% vs. semana anterior</small></div></article>
+  <article class="kpi-card"><div class="kpi-icon orange">🔥</div><div><span>Leads quentes</span><strong>{{ kpis.hot_leads }}</strong><small>↑ 12% vs. semana anterior</small></div></article>
+  <article class="kpi-card"><div class="kpi-icon orange">▣</div><div><span>Visitas agendadas</span><strong>{{ kpis.visits }}</strong><small>↑ 27% vs. semana anterior</small></div></article>
+  <article class="kpi-card"><div class="kpi-icon orange">▤</div><div><span>Propostas enviadas</span><strong>{{ kpis.proposals }}</strong><small>↑ 11% vs. semana anterior</small></div></article>
+  <article class="kpi-card"><div class="kpi-icon green">🏆</div><div><span>Vendas</span><strong>{{ kpis.sales }}</strong><small>↑ 16% vs. semana anterior</small></div></article>
+</div>
+
+<div class="dashboard-grid">
+  <section class="card funnel-card">
+    <div class="card-header"><h2>Funil de vendas</h2><button class="ghost-button">Este mês⌄</button></div>
+    <div class="funnel-wrap">
+      <div class="funnel-labels">
+        {% for item in funnel %}<div><strong>{{ item.label }}</strong><span>{{ item.count }}</span></div>{% endfor %}
+      </div>
+      <div class="funnel-shape">
+        {% for item in funnel %}<div class="funnel-step step-{{ loop.index }}"><span>{{ item.count }} ({{ item.percent }})</span></div>{% endfor %}
+      </div>
+    </div>
+    <div class="split-metric"><div><span>Taxa de conversão global</span><strong>2,2%</strong></div><div><span>Tempo médio do ciclo</span><strong>32 dias</strong></div></div>
+  </section>
+
+  <section class="card ranking-card">
+    <div class="card-header"><h2>Ranking de corretores</h2><button class="ghost-button">Este mês⌄</button></div>
+    <div class="ranking-list">
+      {% for broker in broker_rows[:5] %}
+      <div class="rank-row">
+        <span class="rank rank-{{ loop.index }}">{{ loop.index }}</span>
+        <span class="avatar small">{{ broker.initials }}</span>
+        <div class="grow"><strong>{{ broker.name }}</strong><div class="progress"><i style="width: {{ 100 - loop.index * 11 }}%"></i></div></div>
+        <b>{{ broker.sales }}</b><span>{{ broker.conversion }}</span>
+      </div>
+      {% endfor %}
+    </div>
+    <a class="full-link" href="/corretores">Ver ranking completo →</a>
+  </section>
+
+  <aside class="card insight-panel">
+    <div class="vitoria-head"><span class="avatar vitoria-avatar">V</span><div><h2>Resumo da Vitória</h2><p>Insights e recomendações da sua <b>Agente de IA</b></p></div><span class="spark">✦</span></div>
+    {% for item in insights %}
+    <a class="insight-item" href="/vitoria"><span>{{ item.icon }}</span><div><strong>{{ item.title }}</strong><p>{{ item.text }}</p></div><b>›</b></a>
+    {% endfor %}
+    <a class="outline-action" href="/vitoria">✦ Conversar com a Vitória</a>
+  </aside>
+</div>
+
+<section class="card hot-table-card">
+  <div class="card-header"><h2>Leads quentes que precisam de ação <span class="badge soft">{{ hot_leads|length + 7 }}</span></h2><a href="/leads">Ver todos →</a></div>
+  <div class="lead-table compact">
+    <div class="table-row table-head"><span>Lead</span><span>Interesse</span><span>Última interação</span><span>Responsável</span><span>Próxima ação</span><span>Score</span></div>
+    {% for lead in hot_leads[:4] %}
+    <div class="table-row">
+      <div class="lead-cell"><span class="avatar small warm">{{ lead.initials }}</span><div><strong>{{ lead.name }}</strong><small>{{ lead.development }}</small></div></div>
+      <div class="icons"><span>🟢</span><span>✉</span><span>◉</span></div>
+      <span>{{ lead.updated_label }}</span>
+      <div class="lead-cell"><span class="avatar xsmall">{{ lead.broker_initials }}</span><span>{{ lead.broker }}</span></div>
+      <span>{{ lead.next_action[:42] }}...</span>
+      <span class="score">{{ lead.score }}</span>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

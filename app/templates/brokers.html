@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="panel">
+  <h1>Corretores</h1>
+  <table>
+    <thead><tr><th>Corretor</th><th>Telefone</th><th>Leads ativos</th><th>Quentes</th></tr></thead>
+    <tbody>
+    {% for row in rows %}
+      <tr>
+        <td>{{ row.broker.name }}</td>
+        <td>{{ row.broker.phone }}</td>
+        <td>{{ row.active }}</td>
+        <td>{{ row.hot }}</td>
+      </tr>
+    {% else %}
+      <tr><td colspan="4">Nenhum corretor cadastrado.</td></tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endblock %}

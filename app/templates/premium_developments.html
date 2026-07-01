@@ -1,0 +1,5 @@
+{% extends "premium_base.html" %}
+{% block content %}
+<div class="page-title-row"><div><h2>Empreendimentos</h2><p>Produtos, argumentos comerciais e materiais por loteamento.</p></div><button class="primary-button">+ Novo empreendimento</button></div>
+<div class="development-grid">{% for dev in developments %}<article class="card development-full"><div class="development-hero hero-{{ loop.index }}"></div><div><h2>{{ dev.name }}</h2><p>{{ dev.city }}</p><span class="temp-pill quente">{{ dev.status|title }}</span></div><p>{{ dev.description }}</p><h3>Argumentos de venda</h3><p>{{ dev.sales_arguments }}</p><a class="outline-action full-width" href="/materiais">Ver materiais →</a></article>{% endfor %}</div>
+{% endblock %}

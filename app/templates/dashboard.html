@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <div>
+    <h1>Gestão comercial ativa</h1>
+    <p>A Vitória organiza leads, cobra follow-up e orienta a próxima melhor ação.</p>
+  </div>
+</section>
+
+<section class="cards">
+  <div class="card"><span>Total de leads</span><strong>{{ stats.total_leads }}</strong></div>
+  <div class="card"><span>Leads ativos</span><strong>{{ stats.active_leads }}</strong></div>
+  <div class="card"><span>Leads quentes</span><strong>{{ stats.hot_leads }}</strong></div>
+  <div class="card"><span>Parados 48h+</span><strong>{{ stats.stalled_leads }}</strong></div>
+  <div class="card"><span>Tarefas abertas</span><strong>{{ stats.open_tasks }}</strong></div>
+  <div class="card"><span>Vendas</span><strong>{{ stats.won_leads }}</strong></div>
+</section>
+
+<section class="grid-2">
+  <div class="panel">
+    <h2>Leads recentes</h2>
+    <table>
+      <thead><tr><th>Lead</th><th>Status</th><th>Temp.</th><th>Score</th></tr></thead>
+      <tbody>
+      {% for lead in recent_leads %}
+        <tr>
+          <td><a href="/leads/{{ lead.id }}">{{ lead.name }}</a></td>
+          <td>{{ lead.status }}</td>
+          <td><span class="pill {{ lead.temperature }}">{{ lead.temperature }}</span></td>
+          <td>{{ lead.score }}</td>
+        </tr>
+      {% else %}
+        <tr><td colspan="4">Nenhum lead cadastrado ainda.</td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <h2>Corretores</h2>
+    <table>
+      <thead><tr><th>Corretor</th><th>Leads</th></tr></thead>
+      <tbody>
+      {% for name, count in broker_rows %}
+        <tr><td>{{ name }}</td><td>{{ count }}</td></tr>
+      {% else %}
+        <tr><td colspan="2">Nenhum corretor cadastrado.</td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="panel">
+  <h2>Teste rápido da Vitória</h2>
+  <p>Use a API <code>/api/simulate-message</code> para simular uma conversa sem conectar o WhatsApp ainda.</p>
+  <pre>curl -X POST http://localhost:8000/api/simulate-message \
+  -u evora:troque_esta_senha \
+  -H "Content-Type: application/json" \
+  -d '{"from_phone":"5516999999999","profile_name":"Carlos","text":"Tenho um lead"}'</pre>
+</section>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="panel">
+  <h1>Leads</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Lead</th>
+        <th>Origem</th>
+        <th>Objetivo</th>
+        <th>Status</th>
+        <th>Temperatura</th>
+        <th>Score</th>
+        <th>Próxima ação</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for lead in leads %}
+      <tr>
+        <td><a href="/leads/{{ lead.id }}">{{ lead.name }}</a></td>
+        <td>{{ lead.source or "—" }}</td>
+        <td>{{ lead.objective }}</td>
+        <td>{{ lead.status }}</td>
+        <td><span class="pill {{ lead.temperature }}">{{ lead.temperature }}</span></td>
+        <td>{{ lead.score }}</td>
+        <td>{{ lead.next_action or "—" }}</td>
+      </tr>
+      {% else %}
+      <tr><td colspan="7">Nenhum lead cadastrado.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endblock %}

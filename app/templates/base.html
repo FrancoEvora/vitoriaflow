@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title or "Évora LeadFlow" }}</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <div class="brand">Évora LeadFlow</div>
+      <div class="subtitle">Vitória · agente comercial inteligente</div>
+    </div>
+    <nav>
+      <a href="/">Dashboard</a>
+      <a href="/leads">Leads</a>
+      <a href="/corretores">Corretores</a>
+      <a href="/docs">API</a>
+    </nav>
+  </header>
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

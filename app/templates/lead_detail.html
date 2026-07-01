@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+{% if not lead %}
+<section class="panel"><h1>Lead não encontrado</h1></section>
+{% else %}
+<section class="panel lead-header">
+  <div>
+    <h1>{{ lead.name }}</h1>
+    <p>{{ lead.objective }} · {{ lead.source or "sem origem" }}</p>
+  </div>
+  <div class="scorebox">
+    <span class="pill {{ lead.temperature }}">{{ lead.temperature }}</span>
+    <strong>{{ lead.score }}/100</strong>
+  </div>
+</section>
+
+<section class="grid-2">
+  <div class="panel">
+    <h2>Dados comerciais</h2>
+    <dl>
+      <dt>Status</dt><dd>{{ lead.status }}</dd>
+      <dt>Telefone</dt><dd>{{ lead.phone or "—" }}</dd>
+      <dt>Entrada</dt><dd>{{ lead.budget_entry or "—" }}</dd>
+      <dt>Parcela</dt><dd>{{ lead.budget_installment or "—" }}</dd>
+      <dt>Prazo</dt><dd>{{ lead.purchase_timeline or "—" }}</dd>
+      <dt>Objeção</dt><dd>{{ lead.main_objection or "—" }}</dd>
+      <dt>Próxima ação</dt><dd>{{ lead.next_action or "—" }}</dd>
+    </dl>
+  </div>
+
+  <div class="panel">
+    <h2>Tarefas</h2>
+    <ul class="list">
+      {% for task in tasks %}
+      <li><strong>{{ task.status }}</strong> · {{ task.description }}{% if task.due_at %}<br><small>Vence: {{ task.due_at }}</small>{% endif %}</li>
+      {% else %}
+      <li>Sem tarefas.</li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="panel">
+  <h2>Recomendações da Vitória</h2>
+  {% for rec in recommendations %}
+    <article class="recommendation">
+      <h3>Diagnóstico</h3><p>{{ rec.diagnosis }}</p>
+      <h3>Estratégia</h3><p>{{ rec.strategy }}</p>
+      <h3>Script</h3><pre>{{ rec.script }}</pre>
+      {% if rec.materials %}<h3>Materiais</h3><p>{{ rec.materials }}</p>{% endif %}
+    </article>
+  {% else %}
+    <p>Sem recomendações ainda.</p>
+  {% endfor %}
+</section>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,5 @@
+{% extends "premium_base.html" %}
+{% block content %}
+<div class="page-title-row"><div><h2>Corretores</h2><p>Produtividade, disciplina de follow-up e oportunidades por corretor.</p></div><button class="primary-button">+ Adicionar corretor</button></div>
+<div class="broker-grid">{% for broker in broker_rows %}<article class="card broker-card"><div class="drawer-head"><span class="avatar large">{{ broker.initials }}</span><div><h2>{{ broker.name }}</h2><p>{{ broker.phone }}</p></div><span class="score big">{{ broker.leads }}</span></div><div class="broker-metrics"><span>Leads ativos <b>{{ broker.leads }}</b></span><span>Quentes <b>{{ broker.hot }}</b></span><span>Vendas <b>{{ broker.sales }}</b></span><span>Conversão <b>{{ broker.conversion }}</b></span></div><div class="progress"><i style="width: {{ 80 - loop.index * 7 }}%"></i></div><a class="outline-action full-width" href="/leads">Ver carteira →</a></article>{% endfor %}</div>
+{% endblock %}
