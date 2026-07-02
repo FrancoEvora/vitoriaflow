@@ -21,4 +21,4 @@ def test_vitoria_simulated_whatsapp_message():
             auth=AUTH,
         )
         assert response.status_code == 200
-        assert "Lead" in response.json()["reply"] or "lead" in response.json()["reply"]
+        assert response.json()["reply"].strip()

@@ -79,7 +79,8 @@ curl -X POST http://localhost:8000/api/simulate-message \
 4. Para demo rápida, mantenha:
 
 ```env
-DATABASE_URL=sqlite:////tmp/leadflow_demo.db
+DEMO_FORCE_SQLITE=true
+DATABASE_URL=sqlite:////tmp/leadflow_demo.db//tmp/leadflow_demo.db
 ENABLE_SCHEDULER=false
 APP_ENV=demo
 ```
@@ -97,3 +98,38 @@ Quando formos conectar a operação real:
 4. Criar templates da Vitória na Meta.
 5. Alterar rotinas proativas para `send_template`.
 6. Definir permissões por corretor, gestor e administrador.
+
+## Correção Vercel — 500 `FUNCTION_INVOCATION_FAILED`
+
+Esta versão inclui uma correção específica para a demo na Vercel:
+
+- caminhos absolutos para `templates` e `static`;
+- inicialização idempotente do banco em ambiente serverless;
+- fallback automático para SQLite em `/tmp` quando `DATABASE_URL` estiver vazio, inválido ou com placeholder;
+- tolerância a variáveis opcionais vazias no painel da Vercel;
+- healthcheck que valida a inicialização mínima da aplicação.
+
+Para a demo atual, use:
+
+```env
+APP_ENV=vercel
+DEMO_FORCE_SQLITE=true
+DATABASE_URL=
+DASHBOARD_USERNAME=evora
+DASHBOARD_PASSWORD=leadflow-demo
+DISABLE_DASHBOARD_AUTH=false
+```
+
+Se quiser abrir a demo sem senha temporariamente, use:
+
+```env
+DISABLE_DASHBOARD_AUTH=true
+```
+
+Na versão final com PostgreSQL permanente:
+
+```env
+APP_ENV=production
+DEMO_FORCE_SQLITE=false
+DATABASE_URL=postgresql+psycopg2://usuario:senha@host:5432/database?sslmode=require
+```

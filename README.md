@@ -62,7 +62,8 @@ A aplicação é FastAPI e expõe a instância `app` em `app/main.py`. O arquivo
 Para demo rápida, use SQLite efêmero:
 
 ```env
-DATABASE_URL=sqlite:////tmp/leadflow_demo.db
+DEMO_FORCE_SQLITE=true
+DATABASE_URL=sqlite:////tmp/leadflow_demo.db//tmp/leadflow_demo.db
 APP_ENV=demo
 ENABLE_SCHEDULER=false
 DASHBOARD_USERNAME=evora
@@ -99,3 +100,30 @@ tests/
 - Templates proativos da Vitória na Meta.
 - Login por perfil e permissões.
 - Versionamento dos playbooks comerciais.
+
+## Hotfix Vercel 500
+
+Se aparecer `500: ERRO_INTERNO_DO_SERVIDOR` / `FUNCTION_INVOCATION_FAILED`, use esta versão ou confira `docs/VERCEL_500_HOTFIX.md`. Para a demo, a variável mais segura é:
+
+```env
+DEMO_FORCE_SQLITE=true
+DATABASE_URL=sqlite:////tmp/leadflow_demo.db
+```
+
+Depois de alterar variáveis na Vercel, faça **Redeploy**.
+
+
+## Correção rápida para Vercel 500
+
+Se a Vercel exibir `FUNCTION_INVOCATION_FAILED`, confira `docs/VERCEL_500_TROUBLESHOOTING.md`. Esta versão é tolerante a variáveis vazias e inicializa o banco da demo também em runtime serverless.
+
+## Nota de deploy Vercel
+
+Se aparecer `500: FUNCTION_INVOCATION_FAILED`, verifique primeiro os logs do projeto na Vercel. Esta versão já inclui fallback para SQLite em `/tmp` e tolerância a variáveis vazias, então para a demo você pode deixar `DATABASE_URL` vazio e usar:
+
+```env
+APP_ENV=vercel
+DEMO_FORCE_SQLITE=true
+```
+
+Depois de alterar variáveis de ambiente, faça **Redeploy**.

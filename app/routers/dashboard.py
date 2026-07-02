@@ -5,15 +5,17 @@ from datetime import datetime, timedelta, timezone
 from fastapi import APIRouter, Depends, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
+from app.paths import TEMPLATES_DIR
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session, selectinload
 
 from app.core.auth import require_dashboard_auth
 from app.db import get_db
 from app.models import Development, Interaction, Lead, LeadRecommendation, Material, Task, User
+from app.paths import TEMPLATES_DIR
 
 router = APIRouter(tags=["dashboard"], dependencies=[Depends(require_dashboard_auth)])
-templates = Jinja2Templates(directory="app/templates")
+templates = Jinja2Templates(directory=str(TEMPLATES_DIR))
 
 
 def _initials(name: str) -> str:
@@ -210,44 +212,44 @@ def build_premium_context(request: Request, db: Session, active: str, page_title
 
 @router.get("/", response_class=HTMLResponse)
 def dashboard(request: Request, db: Session = Depends(get_db)):
-    return templates.TemplateResponse("premium_dashboard.html", build_premium_context(request, db, "dashboard", "Dashboard"))
+    return templates.TemplateResponse(request, "premium_dashboard.html", build_premium_context(request, db, "dashboard", "Dashboard"))
 
 
 @router.get("/leads", response_class=HTMLResponse)
 def leads_page(request: Request, db: Session = Depends(get_db)):
-    return templates.TemplateResponse("premium_leads.html", build_premium_context(request, db, "leads", "Leads"))
+    return templates.TemplateResponse(request, "premium_leads.html", build_premium_context(request, db, "leads", "Leads"))
 
 
 @router.get("/vitoria", response_class=HTMLResponse)
 def vitoria_page(request: Request, db: Session = Depends(get_db)):
-    return templates.TemplateResponse("premium_vitoria.html", build_premium_context(request, db, "vitoria", "Vitória • IA de Vendas"))
+    return templates.TemplateResponse(request, "premium_vitoria.html", build_premium_context(request, db, "vitoria", "Vitória • IA de Vendas"))
 
 
 @router.get("/materiais", response_class=HTMLResponse)
 def materials_page(request: Request, db: Session = Depends(get_db)):
-    return templates.TemplateResponse("premium_materials.html", build_premium_context(request, db, "materiais", "Materiais e Playbooks"))
+    return templates.TemplateResponse(request, "premium_materials.html", build_premium_context(request, db, "materiais", "Materiais e Playbooks"))
 
 
 @router.get("/relatorios", response_class=HTMLResponse)
 def reports_page(request: Request, db: Session = Depends(get_db)):
-    return templates.TemplateResponse("premium_reports.html", build_premium_context(request, db, "relatorios", "Relatórios"))
+    return templates.TemplateResponse(request, "premium_reports.html", build_premium_context(request, db, "relatorios", "Relatórios"))
 
 
 @router.get("/corretores", response_class=HTMLResponse)
 def brokers_page(request: Request, db: Session = Depends(get_db)):
-    return templates.TemplateResponse("premium_brokers.html", build_premium_context(request, db, "corretores", "Corretores"))
+    return templates.TemplateResponse(request, "premium_brokers.html", build_premium_context(request, db, "corretores", "Corretores"))
 
 
 @router.get("/empreendimentos", response_class=HTMLResponse)
 def developments_page(request: Request, db: Session = Depends(get_db)):
-    return templates.TemplateResponse("premium_developments.html", build_premium_context(request, db, "empreendimentos", "Empreendimentos"))
+    return templates.TemplateResponse(request, "premium_developments.html", build_premium_context(request, db, "empreendimentos", "Empreendimentos"))
 
 
 @router.get("/configuracoes", response_class=HTMLResponse)
 def settings_page(request: Request, db: Session = Depends(get_db)):
-    return templates.TemplateResponse("premium_settings.html", build_premium_context(request, db, "configuracoes", "Configurações"))
+    return templates.TemplateResponse(request, "premium_settings.html", build_premium_context(request, db, "configuracoes", "Configurações"))
 
 
 @router.get("/leads/{lead_id}", response_class=HTMLResponse)
 def lead_detail_page(lead_id: int, request: Request, db: Session = Depends(get_db)):
-    return templates.TemplateResponse("premium_leads.html", build_premium_context(request, db, "leads", "Leads", selected_lead_id=lead_id))
+    return templates.TemplateResponse(request, "premium_leads.html", build_premium_context(request, db, "leads", "Leads", selected_lead_id=lead_id))

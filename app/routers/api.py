@@ -1,6 +1,9 @@
 from __future__ import annotations
 
 from datetime import datetime, timedelta, timezone
+import os
+import sys
+from pathlib import Path
 
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy import func, select
@@ -11,6 +14,8 @@ from app.db import get_db
 from app.models import Lead, LeadRecommendation, Task, User
 from app.schemas import BrokerOut, LeadOut, SimulateMessageIn, SimulateMessageOut
 from app.services.vitoria import VitoriaAgent
+from app.core.config import get_settings
+from app.paths import STATIC_DIR, TEMPLATES_DIR
 
 router = APIRouter(prefix="/api", tags=["api"], dependencies=[Depends(require_dashboard_auth)])
 
@@ -18,6 +23,23 @@ router = APIRouter(prefix="/api", tags=["api"], dependencies=[Depends(require_da
 @router.get("/health")
 def health() -> dict:
     return {"ok": True, "service": "evora-leadflow"}
+
+
+@router.get("/debug/startup")
+def debug_startup() -> dict:
+    settings = get_settings()
+    db_url = settings.database_url or ""
+    safe_db = db_url.split(":", 1)[0] + "://..." if ":" in db_url else "not-set"
+    return {
+        "ok": True,
+        "python": sys.version.split()[0],
+        "cwd": str(Path.cwd()),
+        "vercel": os.getenv("VERCEL"),
+        "app_env": settings.app_env,
+        "database_url_scheme": safe_db,
+        "static_dir_exists": STATIC_DIR.exists(),
+        "templates_dir_exists": TEMPLATES_DIR.exists(),
+    }
 
 
 @router.get("/leads", response_model=list[LeadOut])
