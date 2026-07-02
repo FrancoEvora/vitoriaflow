@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Leads • Évora LeadFlow</title>
+    <link rel="icon" href="/static/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/static/premium.css" />
+  <meta name="x-demo-mode" content="static" />
+  </head>
+  <body data-active="leads">
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="/" aria-label="Évora LeadFlow">
+          <div class="brand-mark">
+            <svg viewBox="0 0 48 48" role="img" aria-hidden="true">
+              <path d="M9 38V16.5L24 7l15 9.5V38" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+              <path d="M16 38V22h6v16m4 0V18h6v20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+              <path d="M13 38h22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+            </svg>
+          </div>
+          <div>
+            <strong>ÉVORA</strong>
+            <span>LEADFLOW</span>
+          </div>
+        </a>
+
+        <nav class="nav">
+          <a class="nav-item " href="/"><span>▦</span>Dashboard</a>
+          <a class="nav-item active" href="/leads"><span>☷</span>Leads</a>
+          <a class="nav-item " href="/vitoria"><span>✦</span>Vitória</a>
+          <a class="nav-item " href="/corretores"><span>♙</span>Corretores</a>
+          <a class="nav-item " href="/empreendimentos"><span>⌂</span>Empreendimentos</a>
+          <a class="nav-item " href="/materiais"><span>▤</span>Materiais</a>
+          <a class="nav-item " href="/relatorios"><span>▧</span>Relatórios</a>
+          <a class="nav-item " href="/configuracoes"><span>⚙</span>Configurações</a>
+        </nav>
+
+        <div class="development-card">
+          <div class="development-art" aria-hidden="true">
+            <div class="road road-a"></div>
+            <div class="road road-b"></div>
+            <div class="lot lot-1"></div>
+            <div class="lot lot-2"></div>
+            <div class="lot lot-3"></div>
+            <div class="lot lot-4"></div>
+          </div>
+          <span>Residencial</span>
+          <strong>Vila dos Ipês</strong>
+          <a href="/empreendimentos">Ver empreendimento →</a>
+        </div>
+
+        <div class="profile-card">
+          <div class="avatar avatar-photo">LA</div>
+          <div>
+            <strong>Lucas Andrade</strong>
+            <span>Gestor Comercial</span>
+          </div>
+          <span class="chevron">⌄</span>
+        </div>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div class="topbar-left">
+            <button class="icon-button" aria-label="Menu">☰</button>
+            <h1>Leads</h1>
+            <span class="online-pill"><i></i> Vitória online</span>
+          </div>
+          <div class="topbar-right">
+            <button class="icon-button" aria-label="Buscar">⌕</button>
+            <button class="icon-button notification" aria-label="Notificações">◔<b>3</b></button>
+            <div class="date-pill">📅 20 a 26 de maio, 2025⌄</div>
+          </div>
+        </header>
+
+        <section class="content">
+          
+<div class="page-title-row">
+  <div><h2>Leads</h2><p>Funil comercial ativo, com próxima melhor ação gerada pela Vitória.</p></div>
+  <a class="primary-button" href="/vitoria">+ Novo lead com a Vitória</a>
+</div>
+
+<div class="filters-row">
+  <label>Origem<select><option>Todas</option><option>Instagram</option><option>Indicação</option><option>Plantão</option></select></label>
+  <label>Temperatura<select><option>Todas</option><option>Quente</option><option>Morno</option><option>Frio</option></select></label>
+  <label>Empreendimento<select><option>Todos</option><option>Jardins do Lago</option><option>Reserva do Vale</option><option>Solar das Árvores</option><option>Vila dos Ipês</option></select></label>
+  <label>Corretor<select><option>Todos</option><option>Bruno Lima</option><option>Camila Ribeiro</option><option>Carlos Corretor</option><option>Franco</option><option>Juliana Ferreira</option><option>Lucas Andrade</option></select></label>
+  <label class="search-label">⌕<input data-filter-table="lead-list" placeholder="Buscar por nome, telefone ou e-mail..." /></label>
+  <button class="ghost-button">☷ Filtros</button>
+</div>
+
+<section class="pipeline-strip">
+  
+  <div class="pipeline-item"><span>👥</span><div><strong>Novo</strong><b>128</b><small>12%</small></div></div>
+  
+  <div class="pipeline-item"><span>☎</span><div><strong>Contato feito</strong><b>96</b><small>9%</small></div></div>
+  
+  <div class="pipeline-item"><span>✓</span><div><strong>Qualificado</strong><b>64</b><small>7%</small></div></div>
+  
+  <div class="pipeline-item"><span>📅</span><div><strong>Visita</strong><b>38</b><small>4%</small></div></div>
+  
+  <div class="pipeline-item"><span>▣</span><div><strong>Proposta</strong><b>21</b><small>2%</small></div></div>
+  
+  <div class="pipeline-item"><span>▰</span><div><strong>Reserva</strong><b>12</b><small>1%</small></div></div>
+  
+  <div class="pipeline-item"><span>🏆</span><div><strong>Venda</strong><b>7</b><small>1%</small></div></div>
+  
+</section>
+
+<div class="leads-layout">
+  <section class="card table-card">
+    <div class="lead-table full" id="lead-list">
+      <div class="table-row table-head"><span></span><span>Lead</span><span>Temperatura</span><span>Origem</span><span>Empreendimento</span><span>Corretor</span><span>Score</span><span>Próxima ação</span><span></span></div>
+      
+      <a class="table-row lead-result" href="/leads/1" data-search="Juliana Ferreira (11) 98877-6655 Instagram Vila dos Ipês Rafael Souza">
+        <span><input type="checkbox" /></span>
+        <div class="lead-cell"><span class="avatar small hot">JF</span><div><strong>Juliana Ferreira</strong><small>(11) 98877-6655</small></div></div>
+        <span class="temp-pill quente">🔥 Quente</span>
+        <span>◉ Instagram</span>
+        <span>Vila dos Ipês</span>
+        <div class="lead-cell"><span class="avatar xsmall">RS</span><span>Rafael Souza</span></div>
+        <span class="score">92</span>
+        <span>Ligar hoje às 16:00 para agendar v...</span>
+        <span class="dots">⋮</span>
+      </a>
+      
+      <a class="table-row lead-result" href="/leads/2" data-search="Mariana Costa (11) 97654-3321 Indicação Solar das Árvores Camila Ribeiro">
+        <span><input type="checkbox" /></span>
+        <div class="lead-cell"><span class="avatar small hot">MC</span><div><strong>Mariana Costa</strong><small>(11) 97654-3321</small></div></div>
+        <span class="temp-pill quente">🔥 Quente</span>
+        <span>♢ Indicação</span>
+        <span>Solar das Árvores</span>
+        <div class="lead-cell"><span class="avatar xsmall">CR</span><span>Camila Ribeiro</span></div>
+        <span class="score">88</span>
+        <span>Enviar simulação personalizada e c...</span>
+        <span class="dots">⋮</span>
+      </a>
+      
+      <a class="table-row lead-result" href="/leads/3" data-search="Fernando Almeida (11) 96421-0099 Plantão Vila dos Ipês Bruno Lima">
+        <span><input type="checkbox" /></span>
+        <div class="lead-cell"><span class="avatar small hot">FA</span><div><strong>Fernando Almeida</strong><small>(11) 96421-0099</small></div></div>
+        <span class="temp-pill quente">🔥 Quente</span>
+        <span>☎ Plantão</span>
+        <span>Vila dos Ipês</span>
+        <div class="lead-cell"><span class="avatar xsmall">BL</span><span>Bruno Lima</span></div>
+        <span class="score">85</span>
+        <span>Enviar mapa de localização, lote c...</span>
+        <span class="dots">⋮</span>
+      </a>
+      
+      <a class="table-row lead-result" href="/leads/4" data-search="Patrícia Santana (11) 94213-7788 Site Reserva do Vale Juliana Ferreira">
+        <span><input type="checkbox" /></span>
+        <div class="lead-cell"><span class="avatar small warm">PS</span><div><strong>Patrícia Santana</strong><small>(11) 94213-7788</small></div></div>
+        <span class="temp-pill morno">● Morno</span>
+        <span>◎ Site</span>
+        <span>Reserva do Vale</span>
+        <div class="lead-cell"><span class="avatar xsmall">JF</span><span>Juliana Ferreira</span></div>
+        <span class="score">78</span>
+        <span>Enviar materiais e simulação com e...</span>
+        <span class="dots">⋮</span>
+      </a>
+      
+      <a class="table-row lead-result" href="/leads/5" data-search="Rogério Martins (11) 93455-6677 Indicação Solar das Árvores Rafael Souza">
+        <span><input type="checkbox" /></span>
+        <div class="lead-cell"><span class="avatar small warm">RM</span><div><strong>Rogério Martins</strong><small>(11) 93455-6677</small></div></div>
+        <span class="temp-pill morno">● Morno</span>
+        <span>♢ Indicação</span>
+        <span>Solar das Árvores</span>
+        <div class="lead-cell"><span class="avatar xsmall">RS</span><span>Rafael Souza</span></div>
+        <span class="score">72</span>
+        <span>Enviar apresentação curta e pergun...</span>
+        <span class="dots">⋮</span>
+      </a>
+      
+      <a class="table-row lead-result" href="/leads/6" data-search="Letícia Andrade (11) 91234-5566 Instagram Vila dos Ipês Camila Ribeiro">
+        <span><input type="checkbox" /></span>
+        <div class="lead-cell"><span class="avatar small warm">LA</span><div><strong>Letícia Andrade</strong><small>(11) 91234-5566</small></div></div>
+        <span class="temp-pill morno">● Morno</span>
+        <span>◉ Instagram</span>
+        <span>Vila dos Ipês</span>
+        <div class="lead-cell"><span class="avatar xsmall">CR</span><span>Camila Ribeiro</span></div>
+        <span class="score">67</span>
+        <span>Qualificar renda e apresentar lote...</span>
+        <span class="dots">⋮</span>
+      </a>
+      
+      <a class="table-row lead-result" href="/leads/7" data-search="Gabriel Oliveira (11) 99876-4433 Plantão Reserva do Vale Bruno Lima">
+        <span><input type="checkbox" /></span>
+        <div class="lead-cell"><span class="avatar small ">GO</span><div><strong>Gabriel Oliveira</strong><small>(11) 99876-4433</small></div></div>
+        <span class="temp-pill frio">○ Frio</span>
+        <span>☎ Plantão</span>
+        <span>Reserva do Vale</span>
+        <div class="lead-cell"><span class="avatar xsmall">BL</span><span>Bruno Lima</span></div>
+        <span class="score">61</span>
+        <span>Fazer pergunta de diagnóstico ante...</span>
+        <span class="dots">⋮</span>
+      </a>
+      
+      <a class="table-row lead-result" href="/leads/8" data-search="Thais Souza (11) 95566-2211 Site Solar das Árvores Juliana Ferreira">
+        <span><input type="checkbox" /></span>
+        <div class="lead-cell"><span class="avatar small ">TS</span><div><strong>Thais Souza</strong><small>(11) 95566-2211</small></div></div>
+        <span class="temp-pill frio">○ Frio</span>
+        <span>◎ Site</span>
+        <span>Solar das Árvores</span>
+        <div class="lead-cell"><span class="avatar xsmall">JF</span><span>Juliana Ferreira</span></div>
+        <span class="score">59</span>
+        <span>Enviar FAQ documental e vídeo inst...</span>
+        <span class="dots">⋮</span>
+      </a>
+      
+    </div>
+    <div class="pagination"><span>Mostrando 1 a 8 de 128 leads</span><div><button>‹</button><button class="active">1</button><button>2</button><button>3</button><span>...</span><button>16</button><button>›</button></div><button>8 por página⌄</button></div>
+  </section>
+
+  <aside class="card lead-drawer">
+    
+    <div class="drawer-head"><span class="avatar large hot">JF</span><div><h2>Juliana Ferreira</h2><p>(11) 98877-6655 · WhatsApp simulado</p><div><span class="temp-pill quente">Quente</span><span class="badge soft">Novo</span></div></div><span class="score big">92</span></div>
+    <dl class="detail-list">
+      <div><dt>Origem</dt><dd>Instagram</dd></div>
+      <div><dt>Empreendimento de interesse</dt><dd>Vila dos Ipês</dd></div>
+      <div><dt>Objetivo</dt><dd>moradia</dd></div>
+      <div><dt>Objeção principal</dt><dd>Posição do lote / incidência de sol</dd></div>
+    </dl>
+    <div class="history-block"><div class="card-header mini"><h3>Histórico de interações</h3><a href="/vitoria">Ver tudo →</a></div>
+      <div class="history-item"><span>⚙</span><div><strong>Leadflow</strong><p>Vitória classificou o lead e sugeriu próxima ação.</p></div></div><div class="history-item"><span>🟢</span><div><strong>Whatsapp Simulado</strong><p>Lead demonstrou interesse em Vila dos Ipês via Instagram.</p></div></div>
+    </div>
+    <div class="next-action-box"><h3>✦ Próxima melhor ação <small>(gerada pela Vitória)</small></h3><p>Ligar hoje às 16:00 para agendar visita e reforçar diferenciais da posição.</p><button class="primary-button full-width">☎ Ligar agora</button><a class="outline-action full-width" href="/vitoria">✦ Gerar mensagem</a><small>A sugestão da Vitória é baseada no histórico e em leads com perfil semelhante.</small></div>
+    
+  </aside>
+</div>
+
+        </section>
+      </main>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="/static/premium.js"></script>
+  </body>
+</html>

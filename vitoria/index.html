@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Vitória • IA de Vendas • Évora LeadFlow</title>
+    <link rel="icon" href="/static/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/static/premium.css" />
+  <meta name="x-demo-mode" content="static" />
+  </head>
+  <body data-active="vitoria">
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="/" aria-label="Évora LeadFlow">
+          <div class="brand-mark">
+            <svg viewBox="0 0 48 48" role="img" aria-hidden="true">
+              <path d="M9 38V16.5L24 7l15 9.5V38" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+              <path d="M16 38V22h6v16m4 0V18h6v20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+              <path d="M13 38h22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+            </svg>
+          </div>
+          <div>
+            <strong>ÉVORA</strong>
+            <span>LEADFLOW</span>
+          </div>
+        </a>
+
+        <nav class="nav">
+          <a class="nav-item " href="/"><span>▦</span>Dashboard</a>
+          <a class="nav-item " href="/leads"><span>☷</span>Leads</a>
+          <a class="nav-item active" href="/vitoria"><span>✦</span>Vitória</a>
+          <a class="nav-item " href="/corretores"><span>♙</span>Corretores</a>
+          <a class="nav-item " href="/empreendimentos"><span>⌂</span>Empreendimentos</a>
+          <a class="nav-item " href="/materiais"><span>▤</span>Materiais</a>
+          <a class="nav-item " href="/relatorios"><span>▧</span>Relatórios</a>
+          <a class="nav-item " href="/configuracoes"><span>⚙</span>Configurações</a>
+        </nav>
+
+        <div class="development-card">
+          <div class="development-art" aria-hidden="true">
+            <div class="road road-a"></div>
+            <div class="road road-b"></div>
+            <div class="lot lot-1"></div>
+            <div class="lot lot-2"></div>
+            <div class="lot lot-3"></div>
+            <div class="lot lot-4"></div>
+          </div>
+          <span>Residencial</span>
+          <strong>Vila dos Ipês</strong>
+          <a href="/empreendimentos">Ver empreendimento →</a>
+        </div>
+
+        <div class="profile-card">
+          <div class="avatar avatar-photo">LA</div>
+          <div>
+            <strong>Lucas Andrade</strong>
+            <span>Gestor Comercial</span>
+          </div>
+          <span class="chevron">⌄</span>
+        </div>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div class="topbar-left">
+            <button class="icon-button" aria-label="Menu">☰</button>
+            <h1>Vitória • IA de Vendas</h1>
+            <span class="online-pill"><i></i> Vitória online</span>
+          </div>
+          <div class="topbar-right">
+            <button class="icon-button" aria-label="Buscar">⌕</button>
+            <button class="icon-button notification" aria-label="Notificações">◔<b>3</b></button>
+            <div class="date-pill">📅 20 a 26 de maio, 2025⌄</div>
+          </div>
+        </header>
+
+        <section class="content">
+          
+<div class="vitoria-grid">
+  <section class="card chat-card">
+    <div class="card-header"><div><h2>Conversa com a Vitória</h2><p>Sua copilota de inteligência comercial</p></div><span class="spark">✦</span></div>
+    <div class="sample-actions">
+      <button data-sample="Vitória, tenho um lead">Tenho um lead</button>
+      <button data-sample="Meus leads">Meus leads</button>
+      <button data-sample="Leads parados">Leads parados</button>
+      <button data-sample="Script para objeção de preço">Script de objeção</button>
+    </div>
+    <div class="chat-thread" id="chat-thread">
+      <div class="message user"><span class="avatar xsmall">LA</span><div><small>Você · Hoje, 09:42</small><p>Tenho um lead que veio do Instagram. Demonstra interesse no Vila dos Ipês. Pode me ajudar a qualificar?</p></div></div>
+      <div class="message bot"><span class="avatar xsmall vitoria-avatar">V</span><div><small>Vitória · Hoje, 09:42</small><p>Claro, Lucas. Vou te ajudar a qualificar esse lead para entender melhor o perfil e direcionar os próximos passos.</p><ul><li>Qual o principal objetivo: morar, construir ou investir?</li><li>Qual entrada e parcela pretendida?</li><li>Qual prazo para decisão?</li><li>Existe alguma objeção no momento?</li></ul></div></div>
+      <div class="message user"><span class="avatar xsmall">LA</span><div><small>Você · Hoje, 09:45</small><p>Morar no Vila dos Ipês, ideal para 90 dias. Entrada de R$ 60 mil e parcela até R$ 2.800. Acha o preço um pouco alto.</p></div></div>
+      <div class="message bot"><span class="avatar xsmall vitoria-avatar">V</span><div><small>Vitória · Hoje, 09:46</small><p>Perfeito. Montei o resumo ao lado e preparei uma estratégia personalizada para avançar com segurança.</p></div></div>
+    </div>
+    <form class="chat-input" id="vitoria-form">
+      <input id="vitoria-input" placeholder="Digite sua mensagem simulada de WhatsApp..." autocomplete="off" />
+      <button type="submit">➜</button>
+    </form>
+  </section>
+
+  <section class="card extracted-card">
+    <div class="card-header"><h2>Dados extraídos do lead</h2><button class="ghost-button">Editar</button></div>
+    <dl class="detail-list tall">
+      <div><dt>Nome</dt><dd>Mariana Costa</dd></div>
+      <div><dt>Origem</dt><dd>Instagram</dd></div>
+      <div><dt>Empreendimento de interesse</dt><dd>Vila dos Ipês</dd></div>
+      <div><dt>Objetivo</dt><dd>Morar</dd></div>
+      <div><dt>Prazo</dt><dd>Até 90 dias</dd></div>
+      <div><dt>Entrada pretendida</dt><dd>R$ 60.000</dd></div>
+      <div><dt>Parcela desejada</dt><dd>Até R$ 2.800</dd></div>
+      <div><dt>Temperatura</dt><dd><span class="temp-pill quente">Quente</span></dd></div>
+      <div><dt>Objeção principal</dt><dd>Preço um pouco alto</dd></div>
+      <div><dt>Próxima ação sugerida</dt><dd>Enviar condições personalizadas e agendar visita</dd></div>
+    </dl>
+    <div class="conversion-box"><span>Probabilidade de conversão: <b>Alta</b></span><b>↗</b></div>
+  </section>
+
+  <section class="card strategy-card">
+    <div class="card-header"><h2>✦ Estratégia sugerida pela Vitória</h2></div>
+    <h3>Recomendações</h3>
+    <ul class="check-list">
+      <li>Apresentar diferenciais do Vila dos Ipês focando em qualidade de vida e valorização.</li>
+      <li>Mostrar simulação personalizada com entrada de R$ 60 mil e parcela até R$ 2.800.</li>
+      <li>Agendar visita para que ela conheça o decorado e a região.</li>
+    </ul>
+    <h3>Materiais sugeridos</h3>
+    <div class="mini-assets"><span>▤ Tabela de condições <small>PDF</small></span><span>▣ Apresentação do empreendimento <small>PDF</small></span><span>▶ Tour 360º do decorado <small>Vídeo</small></span></div>
+    <h3>Mensagens sugeridas</h3>
+    <div class="script-card"><p>Oi, Mariana! Preparei uma simulação personalizada conforme combinamos. Tenho certeza que vai gostar das condições especiais que separamos para você.</p><button data-copy-text="Oi, Mariana! Preparei uma simulação personalizada conforme combinamos. Tenho certeza que vai gostar das condições especiais que separamos para você.">Copiar mensagem</button><button>Enviar no WhatsApp</button></div>
+    <div class="script-card"><p>Que tal agendarmos uma visita ao decorado? Assim você consegue sentir de perto tudo o que o Vila dos Ipês pode oferecer para você e sua família.</p><button data-copy-text="Que tal agendarmos uma visita ao decorado? Assim você consegue sentir de perto tudo o que o Vila dos Ipês pode oferecer para você e sua família.">Copiar mensagem</button><button>Enviar no WhatsApp</button></div>
+  </section>
+
+  <aside class="side-stack">
+    <section class="card timeline-card"><div class="card-header"><h2>Linha do tempo</h2><a>Ver todas</a></div><div class="timeline"><div><span>✦</span><p><b>09:46</b> Vitória sugeriu estratégia e materiais</p></div><div><span>✎</span><p><b>09:45</b> Informações do lead atualizadas</p></div><div><span>○</span><p><b>09:42</b> Conversa iniciada</p></div><div><span>◉</span><p><b>09:38</b> Lead capturado via Instagram</p></div></div></section>
+    <section class="card tasks-card"><div class="card-header"><h2>Pendências do dia <span class="badge soft">3</span></h2></div><label><span>Responder Mariana Costa<small>Enviar condições do Vila dos Ipês</small></span><input type="checkbox"></label><label><span>Ligar para Rafael Almeida<small>Follow-up sobre proposta</small></span><input type="checkbox"></label><label><span>Agendar visita com Camila Ribeiro<small>Vila dos Ipês — Decorado</small></span><input type="checkbox"></label><a>Ver todas as pendências →</a></section>
+    <section class="tip-card">Dica da Vitória ✨<p>Leads que recebem materiais personalizados e têm visita agendada convertem 3x mais.</p></section>
+  </aside>
+</div>
+
+        </section>
+      </main>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="/static/premium.js"></script>
+  </body>
+</html>

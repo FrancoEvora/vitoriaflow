@@ -1,15 +1,5 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "functions": {
-    "app/main.py": {
-      "maxDuration": 60,
-      "excludeFiles": "{tests/**,__pycache__/**,**/__pycache__/**,.pytest_cache/**,scripts/**,docs/**,*.zip}"
-    }
-  },
-  "crons": [
-    {
-      "path": "/api/cron/daily-reminders",
-      "schedule": "0 11 * * *"
-    }
-  ]
+  "cleanUrls": true,
+  "trailingSlash": false
 }
